@@ -1,14 +1,20 @@
-FROM node:16.13
+##### Development Image #####
+FROM node:16.13 as dev-image
 
-# Create app directory
-RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-
-#install depedencies
-COPY package.json /usr/src/app
-RUN npm install
-
-#bundle app src
 COPY . /usr/src/app
 
-CMD [ "npm" , "start" ]
+ARG app_port
+
+# 1. Install typescript
+# 2. Install packages (non-dev packages)
+# 3. Build
+RUN npm install -g typescript nodemon \
+    && npm install \
+    && npm run-script build
+
+ENV NODE_ENV=development
+
+EXPOSE $app_port
+
+CMD [ "npm" , "run", "dev" ]
