@@ -1,9 +1,11 @@
-import { add } from './lib/math'
+import dotenv from 'dotenv';
 
-function main() {
-  console.log(`math.add(3,4) --> ${add(3, 4)}`)
-  console.log('Lint')
-  console.log('format')
+dotenv.config();
+
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'production';
 }
 
-main()
+import { application } from './config';
+
+application();

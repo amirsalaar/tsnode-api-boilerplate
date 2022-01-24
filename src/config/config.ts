@@ -1,4 +1,15 @@
-export const config = {
+interface IConfig {
+  app: any;
+  port: string | number;
+  hostname: string;
+  authorization: string;
+  jwt: any;
+  toggle: any;
+  db: any;
+  jaeger: any;
+}
+
+export const config: IConfig = {
   app: {
     title: 'Node Skeleton',
     description: 'Node Skeleton',
