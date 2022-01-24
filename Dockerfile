@@ -25,6 +25,7 @@ CMD [ "npm" , "run", "dev" ]
 FROM node:16.13 as prod-image
 
 ARG app_port
+ARG app_env
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
@@ -33,12 +34,11 @@ COPY . /usr/src/app
 COPY --from=dev-image /usr/src/app/dist ./dist
 
 # 1. Install typescript
-# 2. Install packages (non-dev packages)
-# 3. Build
+# 2. Install packages (production packages)
 RUN npm install -g typescript \
     && npm install --production
 
-ENV NODE_ENV=production
+ENV NODE_ENV=${app_env}
 
 EXPOSE $app_port
 
