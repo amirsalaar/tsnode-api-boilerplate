@@ -6,14 +6,14 @@
   "scripts": {
     "build": "npx tsc && npx copyfiles -u 1 -e \"src/**/*.ts\" \"src/**/*.*\" dist/",
     "watch": "tsc --watch -p ./",
-    "debug": "npx cross-env NODE_ENV=development nodemon --nolazy ./dist/server.js",
+    "debug": "npx cross-env NODE_ENV=development nodemon --nolazy",
     "docker-debug": "npm run build && docker-compose up",
     "lint": "eslint --ext .ts .",
     "lint:fix": "npm run lint --fix",
     "format": "prettier --write --loglevel silent './**/*.{json,js,ts,md}'",
     "test": "npx tsc && jest",
     "start": "cross-env NODE_ENV=production node dist/server.js",
-    "dev": "npm run format && npm run lint && npx cross-env NODE_ENV=development nodemon ./dist/server.js",
+    "dev": "npm run format && npm run lint && npx cross-env NODE_ENV=development nodemon",
     "prepare": "husky install",
     "document": "npx typedoc"
   },
@@ -63,6 +63,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
     "typedoc": "^0.22.11",
     "typescript": "^4.2.3"
   }

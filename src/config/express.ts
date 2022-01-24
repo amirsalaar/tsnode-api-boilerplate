@@ -86,6 +86,5 @@ export const application = () => {
         process.env.NODE_ENV
       } mode on ${new Date().toISOString()}`,
     );
-    console.log('Tsts');
   });
 };

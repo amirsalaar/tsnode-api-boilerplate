@@ -6,6 +6,7 @@
     "NODE_ENV": "development"
   },
   "ext": "ts,js,html,json,yml,css",
-  "exec": "npm run build && npm run lint && node --harmony ./dist/server.js",
-  "delay": "2500"
+  "exec": "ts-node src/server.ts",
+  "delay": "2500",
+  "watch": ["./**/*.ts"]
 }
