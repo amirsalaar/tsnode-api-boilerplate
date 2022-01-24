@@ -8,12 +8,9 @@ import cors from 'cors';
 import YAML from 'yamljs';
 import { logger } from '../app/utils';
 import { config } from './';
+import { Server } from 'http';
 
-// let schema = require('../schema/schema').schema
-
-// import {schema as schema} from '../schema/schema
-
-export const application = () => {
+export const application = (): Server => {
   // Initialize express app
   const app = express();
 
