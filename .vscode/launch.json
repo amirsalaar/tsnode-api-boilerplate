@@ -35,6 +35,23 @@
       "protocol": "inspector",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Debug Current TS Tests File",
+      "type": "node",
+      "request": "launch",
+      "program": "jest",
+      "args": [
+        "-r",
+        "ts-node/register",
+        "${relativeFile}",
+        "--colors",
+        "-t 100000"
+      ],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
