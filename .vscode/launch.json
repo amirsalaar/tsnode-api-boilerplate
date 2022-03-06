@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Dev Server",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/server.ts",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "start:dev"],
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Launch Program",
             "type": "node",
             "program": "${workspaceFolder}/dist/server.js",
