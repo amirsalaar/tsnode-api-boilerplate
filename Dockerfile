@@ -1,3 +1,42 @@
+############### Base Image ###############
+FROM node:14-buster-slim AS base
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+############### Build Image ###############
+FROM base AS build
+
+ARG app_env=production
+ARG app_port=8080
+
+WORKDIR /build
+COPY --from=base /app ./
+
+ENV NODE_ENV=${app_env}
+ENV PORT=${app_port}
+EXPOSE ${app_port}
+
+RUN npm run build
+
+############### Deploy Image ###############
+FROM node:14.18.1-alpine AS production
+
+ARG app_env=production
+ENV NODE_ENV=${app_env}
+WORKDIR /app
+COPY --from=build /build/package*.json ./
+COPY --from=build /build/.next ./.next
+COPY --from=build /build/public ./public
+RUN npm install next
+
+EXPOSE 3000
+CMD npm run start
+
+
+
+
 ##### Development Image #####
 FROM node:16.13 as dev-image
 
