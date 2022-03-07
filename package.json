@@ -37,6 +37,7 @@
         "express": "4.17.1",
         "express-session": "1.17.1",
         "express-validator": "6.9.2",
+        "express-winston": "^4.2.0",
         "fbgraph": "1.4.4",
         "lodash": "^4.17.21",
         "lusca": "1.6.1",

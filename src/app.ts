@@ -5,7 +5,7 @@ import path from "path";
 import passport from "passport";
 import { mongoStoreSession } from "./db/mongo";
 import mongooseService from "./db/mongoose.service";
-
+import { expressLogger } from "./util/logger";
 // API keys and Passport configuration
 import * as passportConfig from "./config/passport";
 import appRouter from "./routes";
@@ -18,6 +18,7 @@ app.set("port", process.env.PORT || 3000);
 app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(expressLogger);
 app.use(mongoStoreSession);
 // app.use(passport.initialize());
 // app.use(passport.session());
